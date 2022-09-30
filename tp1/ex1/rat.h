@@ -59,6 +59,14 @@ namespace ensiie {
     bool operator<=(const Rat & r1, const Rat & r2);
     bool operator<=(int i, const Rat & r);
     bool operator<=(const Rat & r, int i);
+
+    bool operator>(const Rat & r1, const Rat & r2);
+    bool operator>(int i, const Rat & r);
+    bool operator>(const Rat & r, int i);
+
+    bool operator>=(const Rat & r1, const Rat & r2);
+    bool operator>=(int i, const Rat & r);
+    bool operator>=(const Rat & r, int i);
 }
 
 #endif

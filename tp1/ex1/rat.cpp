@@ -1,6 +1,6 @@
 #include "rat.h"
-#include <algorithm> // gcd
-#include <cstdlib> // abs
+#include <algorithm> // for gcd
+#include <cstdlib> // for abs
 
 namespace ensiie {
     // (a)
@@ -204,13 +204,13 @@ namespace ensiie {
 
     // viii.
     bool operator<(const Rat & r1, const Rat & r2) {
-        
+        return (r1.get_num() * r2.get_den()) < (r1.get_den() * r2.get_num());
     }
     bool operator<(int i, const Rat & r) {
-        
+        return (i * r.get_den()) < r.get_num();
     }
     bool operator<(const Rat & r, int i) {
-        
+        return r.get_num() < (i * r.get_den());
     }
 
     // ix.
@@ -222,5 +222,27 @@ namespace ensiie {
     }
     bool operator<=(const Rat & r, int i) {
         return (r < i) || (r == i);
+    }
+
+    // x.
+    bool operator>(const Rat & r1, const Rat & r2) {
+        return !(r1 <= r2);
+    }
+    bool operator>(int i, const Rat & r) {
+        return !(i <= r);
+    }
+    bool operator>(const Rat & r, int i) {
+        return !(r <= i);
+    }
+
+    // xi.
+    bool operator>=(const Rat & r1, const Rat & r2) {
+        return !(r1 < r2);
+    }
+    bool operator>=(int i, const Rat & r) {
+        return !(i < r);
+    }
+    bool operator>=(const Rat & r, int i) {
+        return !(r < i);
     }
 }
