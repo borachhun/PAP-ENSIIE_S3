@@ -4,6 +4,8 @@ namespace ensiie {
 
     // (a)
     Vect::Vect(int size) {
+        if (size < 1)
+            throw "Bad size argument"
         data_ = new double[size];
         size_ = size;
     }
@@ -40,17 +42,24 @@ namespace ensiie {
         return data_[index];
     }
 
+    // ii. TODO
+
     // (f)
 
     // i.
     std::ostream & operator<<(std::ostream & st, const Vect & v) {
         st << '(';
-        for (int i=0; i<v.get_size(); i++) {
-            st << v[i];
-            if (i < v.get_size() - 1) {
-                st << ',';
-            }
+        int i;
+        for (i=0; i<v.get_size()-1; i++) {
+            st << v[i] << ',';
         }
-        st << ')';
+        st << v[i+1] <<  ')';
+    }
+
+    // ii.
+    Vect operator+(const Vect & v1, const Vect & v2) {
+        if (v1.get_size() != v2.get_size())
+            throw "Vectors with different sizes"
+        // ...
     }
 }

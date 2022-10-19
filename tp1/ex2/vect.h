@@ -20,6 +20,7 @@ namespace ensiie {
     };
 
     std::ostream & operator<<(std::ostream & st, const Vect & v);
+    Vect operator+(const Vect & v1, const Vect & v2);
 };
 
 #endif
