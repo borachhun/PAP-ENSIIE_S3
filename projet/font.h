@@ -1,17 +1,28 @@
 const int NUM_ALPHA = 26;
 
 class Point2d {
-    int x;
-    int y;
+    private:
+        int x;
+        int y;
+    public:
+        Point2d(int x, int y);
 }
 // Only 2 types of Bezier curves: linear and quadratic
 class Bezier {
-    Point2d ends[2];
-    Point2d *control;
+    private:
+        int degree;
+        Point2d control_points[3];
+    public:
+        Bezier(...);
+
+        int get_degree();
+        Point2d *get_control_points();
 }
 class Glyph {
-    Bezier *curves;
+    private:
+        Bezier *curves;
 }
 class Font {
-    Glyph alphabet[NUM_ALPHA];
+    private:
+        Glyph alphabet[NUM_ALPHA];
 }
