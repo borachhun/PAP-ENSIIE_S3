@@ -11,12 +11,10 @@ class Point2d {
 class Bezier {
     private:
         int degree;
-        Point2d control_points[3];
+        Point2d *control_points[3];
     public:
-        Bezier(...);
-
-        int get_degree();
-        Point2d *get_control_points();
+        Bezier(Point2d *control1, Point2d *control2);
+        Bezier(Point2d *control1, Point2d *control2, Point2d *control3);
 }
 class Glyph {
     private:
