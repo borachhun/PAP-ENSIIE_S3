@@ -15,6 +15,9 @@ class Bezier {
     public:
         Bezier(Point2d *control1, Point2d *control2);
         Bezier(Point2d *control1, Point2d *control2, Point2d *control3);
+
+        int get_degree();
+        Point2d *get_drawing_points();
 }
 class Glyph {
     private:
