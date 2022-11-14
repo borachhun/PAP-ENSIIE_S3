@@ -6,6 +6,8 @@ class Point2d {
         int y;
     public:
         Point2d(int x, int y);
+        int get_x();
+        int get_y();
 }
 // Only 2 types of Bezier curves: linear and quadratic
 class Bezier {

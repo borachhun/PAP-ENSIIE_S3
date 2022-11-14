@@ -1,4 +1,5 @@
 #include <SDL.h>
+#include <font.h>
 
 class Sdl {
     private:
@@ -6,4 +7,5 @@ class Sdl {
         SDL_Renderer *ren;
     public:
         Sdl(); // initialize, create a window and a renderer
+        void draw_bezier(Bezier b);
 }

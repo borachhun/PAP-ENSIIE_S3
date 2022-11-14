@@ -10,3 +10,10 @@ Sdl::Sdl() {
     SDL_SetRenderDrawColor(ren, 255, 255, 255, SDL_ALPHA_OPAQUE);
     SDL_RenderClear(ren);
 }
+void Sdl::draw_bezier(Bezier b) {
+    if (b.get_degree() == 2) {
+        Point2d *points = get_drawing_points();
+        SDL_RenderDrawLine(ren, point, , , );
+    }
+    SDL_RenderDrawLine(ren, , , , );
+}
