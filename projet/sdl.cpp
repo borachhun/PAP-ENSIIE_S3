@@ -1,19 +1,65 @@
 #include <SDL.h>
+#include <vector>
 #include "sdl.h"
 
-Sdl::Sdl() {
-    if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
-        throw "Unable to initialize SDL";
-    }
-    win = SDL_CreateWindow("Font", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_OPENGL);
+namespace sdl {
+
+Window::Window(char *title, int pos_x, int pos_y, int w, int h) {
+    win = SDL_CreateWindow(title, pos_x, pos_y,
+                            w, h, SDL_WINDOW_OPENGL);
     ren = SDL_CreateRenderer(win, -1, 0);
+
     SDL_SetRenderDrawColor(ren, 255, 255, 255, SDL_ALPHA_OPAQUE);
     SDL_RenderClear(ren);
 }
-void Sdl::draw_bezier(Bezier b) {
-    if (b.get_degree() == 2) {
-        Point2d *points = get_drawing_points();
-        SDL_RenderDrawLine(ren, point, , , );
-    }
-    SDL_RenderDrawLine(ren, , , , );
+Uint32 Window::get_window_id() {
+    return SDL_GetWindowID(win);
 }
+void Window::present() {
+    SDL_RenderPresent(ren);
+}
+void Window::destroy_window() {
+    SDL_DestroyWindow(win);
+    SDL_DestroyRenderer(ren);
+}
+void Window::draw_line(int start_x, int start_y, int end_x, int end_y) {
+    SDL_SetRenderDrawColor(ren, 0, 0, 0, SDL_ALPHA_OPAQUE);
+    SDL_RenderDrawLine(ren, start_x, start_y, end_x, end_y);
+    // bolder
+}
+
+
+
+
+
+
+
+
+
+int Sdl::init() {
+    return SDL_Init(SDL_INIT_EVERYTHING);
+}
+void Sdl::quit() {
+    SDL_Quit();
+}
+void Sdl::waiting(std::vector<Window> wins) {
+    bool running = true;
+    SDL_Event event;
+    while (running) {
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_QUIT) {
+                running = false;
+            }
+            else if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_CLOSE) {
+                for (int i=0; i<wins.size(); i++) {
+                    if (wins[i].get_window_id() == event.window.windowID) {
+                        wins[i].destroy_window();
+                        break;
+                    }
+                }
+            }
+        }
+    }
+}
+
+} // namespace sdl
