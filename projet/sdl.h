@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include <vector>
+#include "point2d.h"
 
 namespace sdl {
 
@@ -11,11 +12,12 @@ class Window {
     SDL_Renderer *ren;
 
     public:
-        Window(char *title, int pos_x, int pos_y, int w, int h);
+        Window(char *title, Point2d pos, int w, int h);
         Uint32 get_window_id();
         void present();
         void destroy_window();
-        void draw_line(int start_x, int start_y, int end_x, int end_y);
+        void draw_line(Point2d start, Point2d end);
+        void draw_curve(std::vector<Point2d> points);
 };
 
 class Sdl {
