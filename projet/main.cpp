@@ -1,6 +1,7 @@
 #include <vector>
 #include "point2d.h"
 #include "sdl.h"
+#include "font.h"
 
 int main() {
     sdl::Sdl sdl;
@@ -13,10 +14,8 @@ int main() {
 
     /* === WINDOW 1 === */
     wins.push_back(
-        sdl::Window("Font 1", Point2d(100, 100), 640, 480)
+        sdl::Window("Circle", Point2d(200, 100), 640, 480)
     );
-    wins[0].draw_line(Point2d(10, 10), Point2d(100, 100));
-
     std::vector<Point2d> circle{Point2d(443,240), Point2d(442,255), Point2d(440,271), Point2d(435,285),
                                 Point2d(428,299), Point2d(420,313), Point2d(410,325), Point2d(399,335),
                                 Point2d(386,344), Point2d(373,352), Point2d(358,357), Point2d(343,361),
@@ -29,9 +28,17 @@ int main() {
                                 Point2d(297,119), Point2d(312,117), Point2d(328,117), Point2d(343,119),
                                 Point2d(358,123), Point2d(373,128), Point2d(386,136), Point2d(399,145),
                                 Point2d(410,155), Point2d(420,167), Point2d(428,181), Point2d(435,195), 
-                                Point2d(440,209), Point2d(442,225)};
+                                Point2d(440,209), Point2d(442,225), Point2d(443,240)};
     wins[0].draw_curve(circle);
     wins[0].present();
+
+    /* === WINDOW 2 === */
+    wins.push_back(
+        sdl::Window("Font 1", Point2d(300, 200), 1280, 720)
+    );
+    Font e;
+    // e['E'] = Glyph()
+    wins[1].present();
 
 
     sdl.waiting(wins);

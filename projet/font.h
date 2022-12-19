@@ -1,31 +1,35 @@
+#ifndef FONT_H
+#define FONT_H
+
+#include <vector>
+#include "point2d.h"
+
 const int NUM_ALPHA = 26;
 
-class Point2d {
-    private:
-        int x;
-        int y;
-    public:
-        Point2d(int x, int y);
-        int get_x();
-        int get_y();
-}
-// Only 2 types of Bezier curves: linear and quadratic
 class Bezier {
-    private:
-        int degree;
-        Point2d *control_points[3];
-    public:
-        Bezier(Point2d *control1, Point2d *control2);
-        Bezier(Point2d *control1, Point2d *control2, Point2d *control3);
+    // linear: 2 elements, quadratic: 3 elements
+    std::vector<Point2d> elements;
 
-        int get_degree();
-        Point2d *get_drawing_points();
-}
+    public:
+        Bezier(Point2d end1, Point2d end2);
+        Bezier(Point2d end1, Point2d end2, Point2d control);
+        Bezier(std::vector<Point2d> elts);
+
+        int get_degree() const;
+        std::vector<Point2d> get_drawing_points();
+};
 class Glyph {
-    private:
-        Bezier *curves;
-}
+    std::vector<Bezier> curves;
+
+    public:
+        Glyph(std::vector<Bezier> c);
+        std::vector<Point2d> get_drawing_points();
+};
 class Font {
-    private:
-        Glyph alphabet[NUM_ALPHA];
-}
+    Glyph alphabets[NUM_ALPHA];
+
+    public:
+        Glyph & operator[](char c);
+};
+
+#endif
