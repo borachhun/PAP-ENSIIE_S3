@@ -17,7 +17,7 @@ class Window {
         void present();
         void destroy_window();
         void draw_line(Point2d start, Point2d end);
-        void draw_curve(std::vector<Point2d> points);
+        void draw_lines(std::vector<Point2d> points);
 };
 
 class Sdl {

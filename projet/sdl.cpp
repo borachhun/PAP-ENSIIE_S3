@@ -28,8 +28,8 @@ void Window::draw_line(Point2d start, Point2d end) {
     SDL_RenderDrawLine(ren, start.get_x(), start.get_y(), end.get_x(), end.get_y());
     // bolder
 }
-void Window::draw_curve(std::vector<Point2d> points) {
-    for (int i=0; i<points.size()-1; i++) {
+void Window::draw_lines(std::vector<Point2d> points) {
+    for (int i=0; i<points.size()-1; i+=2) {
         draw_line(points[i], points[i+1]);
     }
 }
