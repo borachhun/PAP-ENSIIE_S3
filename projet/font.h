@@ -4,8 +4,6 @@
 #include <vector>
 #include "point2d.h"
 
-const int NUM_ALPHA = 26;
-
 class Bezier {
     // linear: 2 elements, quadratic: 3 elements
     std::vector<Point2d> elements;
@@ -16,20 +14,22 @@ class Bezier {
         Bezier(std::vector<Point2d> elts);
 
         int get_degree() const;
-        std::vector<Point2d> get_drawing_points();
+        std::vector<Point2d> get_drawing_points() const;
 };
 class Glyph {
     std::vector<Bezier> curves;
 
     public:
         Glyph(std::vector<Bezier> c);
-        std::vector<Point2d> get_drawing_points();
+        std::vector<Point2d> get_drawing_points() const;
 };
 class Font {
-    Glyph alphabets[NUM_ALPHA];
+    std::vector<Glyph> alphabets;
 
     public:
-        Glyph & operator[](char c);
+        Font();
+        Glyph & operator[](char C);
+        const Glyph operator[](char C) const;
 };
 
 #endif

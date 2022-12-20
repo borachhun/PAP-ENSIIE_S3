@@ -37,7 +37,10 @@ int main() {
         sdl::Window("Font 1", Point2d(300, 200), 1280, 720)
     );
     Font e;
-    // e['E'] = Glyph()
+    e['E'] = Glyph(std::vector<Bezier>{
+        Bezier(Point2d(100,100), Point2d(100,200)), Bezier(Point2d(100,200), Point2d(150,200)), Bezier(Point2d(150,200), Point2d(100,100))
+    });
+    wins[1].draw_curve(e['E'].get_drawing_points());
     wins[1].present();
 
 

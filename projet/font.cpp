@@ -2,6 +2,8 @@
 #include "point2d.h"
 #include "font.h"
 
+const int NUM_ALPHABET = 26;
+
 Bezier::Bezier(Point2d end1, Point2d end2) {
     elements.push_back(end1);
     elements.push_back(end2);
@@ -15,7 +17,7 @@ Bezier::Bezier(std::vector<Point2d> elts) : elements(elts) {}
 int Bezier::get_degree() const {
     return elements.size()-1;
 }
-std::vector<Point2d> Bezier::get_drawing_points() {
+std::vector<Point2d> Bezier::get_drawing_points() const {
     if (get_degree() == 1) {
         return elements;
     }
@@ -27,22 +29,34 @@ std::vector<Point2d> Bezier::get_drawing_points() {
 }
 
 Glyph::Glyph(std::vector<Bezier> c) : curves(c) {}
-std::vector<Point2d> Glyph::get_drawing_points() {
+std::vector<Point2d> Glyph::get_drawing_points() const {
     std::vector<Point2d> res;
     for (int i=0; i<curves.size(); i++) {
-        res.insert(...);
+        std::vector<Point2d> current_drawing_points = curves[i].get_drawing_points();
+        for (int j=0; j<current_drawing_points.size(); j++) {
+            res.push_back(current_drawing_points[j]);
+        }
     }
     return res;
 }
 
-Glyph & Font::operator[](char c) {
-    // small letter
-    if (c >= 97 && c <= 122) {
-        return alphabets[c-97];
+Font::Font() {
+    for (int i=0; i<NUM_ALPHABET; i++) {
+        alphabets.push_back(
+            Glyph(std::vector<Bezier>{Bezier(Point2d(0,0), Point2d(0,0))})
+        );
     }
-    // capital letter
-    else if (c >= 65 && c <= 90) {
-        return alphabets[c-65];
+}
+// C: capital letter
+Glyph & Font::operator[](char C) {
+    if (C >= 65 && C <= 90) {
+        return alphabets[int(C-65)];
+    }
+    throw "Invalid character";
+}
+const Glyph Font::operator[](char C) const {
+    if (C >= 65 && C <= 90) {
+        return alphabets[int(C-65)];
     }
     throw "Invalid character";
 }
