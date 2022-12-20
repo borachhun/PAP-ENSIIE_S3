@@ -16,8 +16,7 @@ class Window {
         Uint32 get_window_id();
         void present();
         void destroy_window();
-        void draw_line(Point2d start, Point2d end);
-        void draw_lines(std::vector<Point2d> points);
+        void draw_lines(std::vector<Point2d> points, int offset_x, int offset_y);
 };
 
 class Sdl {

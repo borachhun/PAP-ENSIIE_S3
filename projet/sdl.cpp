@@ -23,14 +23,13 @@ void Window::destroy_window() {
     SDL_DestroyWindow(win);
     SDL_DestroyRenderer(ren);
 }
-void Window::draw_line(Point2d start, Point2d end) {
+void Window::draw_lines(std::vector<Point2d> points, int offset_x, int offset_y) {
     SDL_SetRenderDrawColor(ren, 0, 0, 0, SDL_ALPHA_OPAQUE);
-    SDL_RenderDrawLine(ren, start.get_x(), start.get_y(), end.get_x(), end.get_y());
-    // bolder
-}
-void Window::draw_lines(std::vector<Point2d> points) {
     for (int i=0; i<points.size()-1; i+=2) {
-        draw_line(points[i], points[i+1]);
+        Point2d start = points[i];
+        Point2d end = points[i+1];
+        SDL_RenderDrawLine(ren, start.get_x()+offset_x, start.get_y()+offset_y,
+                                end.get_x()+offset_x, end.get_y()+offset_y);
     }
 }
 
