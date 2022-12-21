@@ -25,7 +25,7 @@ void Window::destroy_window() {
 }
 void Window::draw_lines(std::vector<Point2d> points, int offset_x, int offset_y) {
     SDL_SetRenderDrawColor(ren, 0, 0, 0, SDL_ALPHA_OPAQUE);
-    for (int i=0; i<points.size()-1; i+=2) {
+    for (unsigned int i=0; i<points.size()-1; i+=2) {
         Point2d start = points[i];
         Point2d end = points[i+1];
         SDL_RenderDrawLine(ren, start.get_x()+offset_x, start.get_y()+offset_y,
@@ -56,7 +56,7 @@ void Sdl::waiting(std::vector<Window> wins) {
                 running = false;
             }
             else if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_CLOSE) {
-                for (int i=0; i<wins.size(); i++) {
+                for (unsigned int i=0; i<wins.size(); i++) {
                     if (wins[i].get_window_id() == event.window.windowID) {
                         wins[i].destroy_window();
                         break;

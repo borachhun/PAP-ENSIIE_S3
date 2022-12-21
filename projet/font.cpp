@@ -49,9 +49,9 @@ Point2d Bezier::de_casteljau(double t) const {
 Glyph::Glyph(std::vector<Bezier> c) : curves(c) {}
 std::vector<Point2d> Glyph::get_drawing_points() const {
     std::vector<Point2d> res;
-    for (int i=0; i<curves.size(); i++) {
+    for (unsigned int i=0; i<curves.size(); i++) {
         std::vector<Point2d> current_drawing_points = curves[i].get_drawing_points();
-        for (int j=0; j<current_drawing_points.size(); j++) {
+        for (unsigned int j=0; j<current_drawing_points.size(); j++) {
             res.push_back(current_drawing_points[j]);
         }
     }
