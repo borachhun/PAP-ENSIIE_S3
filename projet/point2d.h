@@ -11,6 +11,8 @@ class Point2d {
         Point2d(const Point2d & p) : x_(p.get_x()), y_(p.get_y()) {}
         int get_x() const { return x_; }
         int get_y() const { return y_; }
+        void set_x(int x) { x_ = x; }
+        void set_y(int y) { y_ = y; }
 };
 
 #endif

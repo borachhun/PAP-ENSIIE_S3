@@ -15,6 +15,8 @@ class Bezier {
 
         int get_degree() const;
         std::vector<Point2d> get_drawing_points() const;
+
+        Point2d de_casteljau(double t) const;
 };
 class Glyph {
     std::vector<Bezier> curves;

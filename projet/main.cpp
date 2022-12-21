@@ -44,8 +44,17 @@ int main() {
         Bezier(Point2d(76,100), Point2d(67,76)),    Bezier(Point2d(67,76), Point2d(33,76)),
         Bezier(Point2d(33,76), Point2d(24,100)),    Bezier(Point2d(24,100), Point2d(0,100)),
 
-        Bezier(Point2d(41,56), Point2d(50,32)),      Bezier(Point2d(50,32), Point2d(59,56)),
+        Bezier(Point2d(41,56), Point2d(50,32)),     Bezier(Point2d(50,32), Point2d(59,56)),
         Bezier(Point2d(59,56), Point2d(41,56))
+    });
+    font1['D'] = Glyph(std::vector<Bezier>{
+        Bezier(Point2d(0,0), Point2d(50,0)),                            Bezier(Point2d(50,0), Point2d(100,50), Point2d(100,0)),
+        Bezier(Point2d(100,50), Point2d(50,100), Point2d(100,100)),     Bezier(Point2d(50,100), Point2d(0,100)),
+        Bezier(Point2d(0,100), Point2d(0,0)),
+
+        Bezier(Point2d(20,20), Point2d(50,20)),                         Bezier(Point2d(50,20), Point2d(80,50), Point2d(80,20)),
+        Bezier(Point2d(80,50), Point2d(50,80), Point2d(80,80)),         Bezier(Point2d(50,80), Point2d(20,80)),
+        Bezier(Point2d(20,80), Point2d(20,20))
     });
     font1['E'] = Glyph(std::vector<Bezier>{
         Bezier(Point2d(0,0), Point2d(0,100)),       Bezier(Point2d(0,100), Point2d(100,100)),
@@ -96,11 +105,26 @@ int main() {
         Bezier(Point2d(60,100), Point2d(40,100)),   Bezier(Point2d(40,100), Point2d(40,20)),
         Bezier(Point2d(40,20), Point2d(0,20)),      Bezier(Point2d(0,20), Point2d(0,0))
     });
+    font1['U'] = Glyph(std::vector<Bezier>{
+        Bezier(Point2d(0,0), Point2d(0,50)),                            Bezier(Point2d(0,50), Point2d(50,100), Point2d(0,100)),
+        Bezier(Point2d(50,100), Point2d(100,50), Point2d(100,100)),     Bezier(Point2d(100,50), Point2d(100,0)),
+        Bezier(Point2d(100,0), Point2d(80,0)),                          Bezier(Point2d(80,0), Point2d(80,50)),                          
+        Bezier(Point2d(80,50), Point2d(50,80), Point2d(80,80)),         Bezier(Point2d(50,80), Point2d(20,50), Point2d(20,80)),
+        Bezier(Point2d(20,50), Point2d(20,0)),                          Bezier(Point2d(20,0), Point2d(0,0))
+    });
     font1['V'] = Glyph(std::vector<Bezier>{
         Bezier(Point2d(0,0), Point2d(38,100)),      Bezier(Point2d(38,100), Point2d(62,100)),
         Bezier(Point2d(62,100), Point2d(100,0)),    Bezier(Point2d(100,0), Point2d(76,0)),
         Bezier(Point2d(76,0), Point2d(50,68)),      Bezier(Point2d(50,68), Point2d(24,0)),
         Bezier(Point2d(24,0), Point2d(0,0))
+    });
+    font1['X'] = Glyph(std::vector<Bezier>{
+        Bezier(Point2d(0,0), Point2d(24,0)),        Bezier(Point2d(24,0), Point2d(50,34)),
+        Bezier(Point2d(50,34), Point2d(76,0)),      Bezier(Point2d(76,0), Point2d(100,0)),
+        Bezier(Point2d(100,0), Point2d(62,50)),     Bezier(Point2d(62,50), Point2d(100,100)),
+        Bezier(Point2d(100,100), Point2d(76,100)),  Bezier(Point2d(76,100), Point2d(50,66)),
+        Bezier(Point2d(50,66), Point2d(24,100)),    Bezier(Point2d(24,100), Point2d(0,100)),
+        Bezier(Point2d(0,100), Point2d(38,50)),     Bezier(Point2d(38,50), Point2d(0,0))
     });
     font1['Y'] = Glyph(std::vector<Bezier>{
         Bezier(Point2d(0,0), Point2d(24,0)),        Bezier(Point2d(24,0), Point2d(50,39)),
