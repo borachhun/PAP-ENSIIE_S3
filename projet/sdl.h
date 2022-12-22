@@ -20,10 +20,14 @@ class Window {
 };
 
 class Sdl {
+    std::vector<sdl::Window> wins;
+
     public:
         int init();
         void quit();
-        void waiting(std::vector<Window> wins);
+        void waiting();
+        void add_window(char *title, Point2d pos, int w, int h);
+        Window & get_window(unsigned int i);
 };
 
 } // namespace sdl

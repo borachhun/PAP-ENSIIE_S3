@@ -47,7 +47,7 @@ int Sdl::init() {
 void Sdl::quit() {
     SDL_Quit();
 }
-void Sdl::waiting(std::vector<Window> wins) {
+void Sdl::waiting() {
     bool running = true;
     SDL_Event event;
     while (running) {
@@ -65,6 +65,15 @@ void Sdl::waiting(std::vector<Window> wins) {
             }
         }
     }
+}
+void Sdl::add_window(char *title, Point2d pos, int w, int h) {
+    wins.push_back(sdl::Window(title, pos, w, h));
+}
+Window & Sdl::get_window(unsigned int i) {
+    if (i >= wins.size()) {
+        throw "bad index";
+    }
+    return wins[i];
 }
 
 } // namespace sdl

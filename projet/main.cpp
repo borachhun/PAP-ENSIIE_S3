@@ -4,21 +4,6 @@
 #include "font.h"
 
 int main() {
-    sdl::Sdl sdl;
-
-    if (sdl.init() != 0) {
-        return -1;
-    }
-
-    std::vector<sdl::Window> wins;
-
-    const int WIN_WIDTH = 1100;
-    const int WIN_HEIGHT = 380;
-
-    /* === WINDOW 1 === */
-    wins.push_back(
-        sdl::Window("FONT 1", Point2d(100, 100), WIN_WIDTH, WIN_HEIGHT)
-    );
 
     Font font1;
     font1['A'] = Glyph(std::vector<Bezier>{
@@ -234,6 +219,19 @@ int main() {
         Bezier(Point2d(70,20), Point2d(0,20)),      Bezier(Point2d(0,20), Point2d(0,0))
     });
 
+
+    sdl::Sdl sdl;
+
+    if (sdl.init() != 0) {
+        return -1;
+    }
+    
+    const int WIN_WIDTH = 1100;
+    const int WIN_HEIGHT = 380;
+
+    /* === WINDOW 1 === */
+    sdl.add_window("FONT 1", Point2d(100, 100), WIN_WIDTH, WIN_HEIGHT);
+
     int row = 0;
     int col = 0;
     for (char C='A'; C<='Z'; C++) {
@@ -241,13 +239,13 @@ int main() {
             row++;
             col = 0;
         }
-        wins[0].draw_lines(font1[C].get_drawing_points(), 120*col+20, 120*row+20);
+        sdl.get_window(0).draw_lines(font1[C].get_drawing_points(), 120*col+20, 120*row+20);
         col++;
     }
 
-    wins[0].present();
+    sdl.get_window(0).present();
 
-    sdl.waiting(wins);
+    sdl.waiting();
 
     sdl.quit();
     return 0;
