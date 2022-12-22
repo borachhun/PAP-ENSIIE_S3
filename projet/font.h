@@ -18,6 +18,9 @@ class Bezier {
 
         Point2d de_casteljau(double t) const;
 };
+
+
+
 class Glyph {
     std::vector<Bezier> curves;
 
@@ -25,6 +28,9 @@ class Glyph {
         Glyph(std::vector<Bezier> c);
         std::vector<Point2d> get_drawing_points() const;
 };
+
+
+
 class Font {
     std::vector<Glyph> alphabets;
 

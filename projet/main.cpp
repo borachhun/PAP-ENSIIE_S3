@@ -1,7 +1,8 @@
 #include <vector>
 #include "point2d.h"
-#include "sdl.h"
 #include "font.h"
+#include "window.h"
+#include "sdl.h"
 
 int main() {
 
