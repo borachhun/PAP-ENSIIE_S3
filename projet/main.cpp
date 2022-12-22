@@ -12,26 +12,6 @@ int main() {
 
     std::vector<sdl::Window> wins;
 
-    /* === WINDOW 1 === */
-    // wins.push_back(
-    //     sdl::Window("Circle", Point2d(200, 100), 640, 480)
-    // );
-    // std::vector<Point2d> circle{Point2d(443,240), Point2d(442,255), Point2d(440,271), Point2d(435,285),
-    //                             Point2d(428,299), Point2d(420,313), Point2d(410,325), Point2d(399,335),
-    //                             Point2d(386,344), Point2d(373,352), Point2d(358,357), Point2d(343,361),
-    //                             Point2d(328,363), Point2d(312,363), Point2d(297,361), Point2d(282,357),
-    //                             Point2d(267,352), Point2d(254,344), Point2d(241,335), Point2d(230,325),
-    //                             Point2d(220,313), Point2d(212,299), Point2d(205,285), Point2d(200,271),
-    //                             Point2d(198,255), Point2d(197,240), Point2d(198,225), Point2d(200,209), 
-    //                             Point2d(205,195), Point2d(212,181), Point2d(220,167), Point2d(230,155),
-    //                             Point2d(241,145), Point2d(254,136), Point2d(267,128), Point2d(282,123),
-    //                             Point2d(297,119), Point2d(312,117), Point2d(328,117), Point2d(343,119),
-    //                             Point2d(358,123), Point2d(373,128), Point2d(386,136), Point2d(399,145),
-    //                             Point2d(410,155), Point2d(420,167), Point2d(428,181), Point2d(435,195), 
-    //                             Point2d(440,209), Point2d(442,225), Point2d(443,240)};
-    // wins[0].draw_curve(circle);
-    // wins[0].present();
-
     const int WIN_WIDTH = 1100;
     const int WIN_HEIGHT = 380;
 
@@ -50,12 +30,6 @@ int main() {
         Bezier(Point2d(41,56), Point2d(50,32)),     Bezier(Point2d(50,32), Point2d(59,56)),
         Bezier(Point2d(59,56), Point2d(41,56))
     });
-    // font1['B'] = Glyph(std::vector<Bezier>{
-    //     Bezier(Point2d(0,100), Point2d(0,0)),                           Bezier(Point2d(0,0), Point2d(75,0)),
-    //     Bezier(Point2d(75,0), Point2d(100,25), Point2d(100,0)),         Bezier(Point2d(100,25), Point2d(75,50), Point2d(100,50)),
-    //     Bezier(Point2d(75,50), Point2d(100,75), Point2d(100,50)),       Bezier(Point2d(100,75), Point2d(75,100), Point2d(100,100)),
-    //     Bezier(Point2d(75,100), Point2d(0,100)),
-    // });
     font1['B'] = Glyph(std::vector<Bezier>{
         Bezier(Point2d(0,100), Point2d(0,0)),                           Bezier(Point2d(0,0), Point2d(50,0)),
         Bezier(Point2d(50,0), Point2d(100,25), Point2d(100,0)),         Bezier(Point2d(100,25), Point2d(80,50), Point2d(100,50)),
@@ -152,7 +126,7 @@ int main() {
         Bezier(Point2d(20,0), Point2d(50,50)),      Bezier(Point2d(50,50), Point2d(80,0)),
         Bezier(Point2d(80,0), Point2d(100,0)),      Bezier(Point2d(100,0), Point2d(100,100)),
         Bezier(Point2d(100,100), Point2d(80,100)),  Bezier(Point2d(80,100), Point2d(80,40)),
-        Bezier(Point2d(80,40), Point2d(50,90)),    Bezier(Point2d(50,90), Point2d(20,40)),
+        Bezier(Point2d(80,40), Point2d(50,90)),     Bezier(Point2d(50,90), Point2d(20,40)),
         Bezier(Point2d(20,40), Point2d(20,100)),    Bezier(Point2d(20,100), Point2d(0,100))
     });
     font1['N'] = Glyph(std::vector<Bezier>{
@@ -178,6 +152,15 @@ int main() {
         Bezier(Point2d(20,20), Point2d(70,20)),                         Bezier(Point2d(70,20), Point2d(80,30), Point2d(80,20)),
         Bezier(Point2d(80,30), Point2d(70,40), Point2d(80,40)),         Bezier(Point2d(70,40), Point2d(20,40)),
         Bezier(Point2d(20,40), Point2d(20,20))
+    });
+    font1['Q'] = Glyph(std::vector<Bezier>{
+        Bezier(Point2d(50,0), Point2d(100,50), Point2d(100,0)),         Bezier(Point2d(100,50), Point2d(87,83), Point2d(100,75)),
+        Bezier(Point2d(87,83), Point2d(100,100)),                       Bezier(Point2d(100,100), Point2d(80,100)),
+        Bezier(Point2d(80,100), Point2d(75,93)),                        Bezier(Point2d(75,93), Point2d(50,100), Point2d(70,100)),
+        Bezier(Point2d(50,100), Point2d(0,50), Point2d(0,100)),         Bezier(Point2d(0,50), Point2d(50,0), Point2d(0,0)),
+
+        Bezier(Point2d(50,20), Point2d(80,50), Point2d(80,20)),         Bezier(Point2d(80,50), Point2d(50,80), Point2d(80,80)),
+        Bezier(Point2d(50,80), Point2d(20,50), Point2d(20,80)),         Bezier(Point2d(20,50), Point2d(50,20), Point2d(20,20)),
     });
     font1['R'] = Glyph(std::vector<Bezier>{
         Bezier(Point2d(0,100), Point2d(0,0)),                           Bezier(Point2d(0,0), Point2d(70,0)),
@@ -251,34 +234,16 @@ int main() {
         Bezier(Point2d(70,20), Point2d(0,20)),      Bezier(Point2d(0,20), Point2d(0,0))
     });
 
-    wins[0].draw_lines(font1['A'].get_drawing_points(), 120*0+20, 20);
-    wins[0].draw_lines(font1['B'].get_drawing_points(), 120*1+20, 20);
-    wins[0].draw_lines(font1['C'].get_drawing_points(), 120*2+20, 20);
-    wins[0].draw_lines(font1['D'].get_drawing_points(), 120*3+20, 20);
-    wins[0].draw_lines(font1['E'].get_drawing_points(), 120*4+20, 20);
-    wins[0].draw_lines(font1['F'].get_drawing_points(), 120*5+20, 20);
-    wins[0].draw_lines(font1['G'].get_drawing_points(), 120*6+20, 20);
-    wins[0].draw_lines(font1['H'].get_drawing_points(), 120*7+20, 20);
-    wins[0].draw_lines(font1['I'].get_drawing_points(), 120*8+20, 20);
-    
-    wins[0].draw_lines(font1['J'].get_drawing_points(), 120*0+20, 120*1+20);
-    wins[0].draw_lines(font1['K'].get_drawing_points(), 120*1+20, 120*1+20);
-    wins[0].draw_lines(font1['L'].get_drawing_points(), 120*2+20, 120*1+20);
-    wins[0].draw_lines(font1['M'].get_drawing_points(), 120*3+20, 120*1+20);
-    wins[0].draw_lines(font1['N'].get_drawing_points(), 120*4+20, 120*1+20);
-    wins[0].draw_lines(font1['O'].get_drawing_points(), 120*5+20, 120*1+20);
-    wins[0].draw_lines(font1['P'].get_drawing_points(), 120*6+20, 120*1+20);
-    wins[0].draw_lines(font1['Q'].get_drawing_points(), 120*7+20, 120*1+20);
-    wins[0].draw_lines(font1['R'].get_drawing_points(), 120*8+20, 120*1+20);
-
-    wins[0].draw_lines(font1['S'].get_drawing_points(), 120*0+20, 120*2+20);
-    wins[0].draw_lines(font1['T'].get_drawing_points(), 120*1+20, 120*2+20);
-    wins[0].draw_lines(font1['U'].get_drawing_points(), 120*2+20, 120*2+20);
-    wins[0].draw_lines(font1['V'].get_drawing_points(), 120*3+20, 120*2+20);
-    wins[0].draw_lines(font1['W'].get_drawing_points(), 120*4+20, 120*2+20);
-    wins[0].draw_lines(font1['X'].get_drawing_points(), 120*5+20, 120*2+20);
-    wins[0].draw_lines(font1['Y'].get_drawing_points(), 120*6+20, 120*2+20);
-    wins[0].draw_lines(font1['Z'].get_drawing_points(), 120*7+20, 120*2+20);
+    int row = 0;
+    int col = 0;
+    for (char C='A'; C<='Z'; C++) {
+        if (col == 9) {
+            row++;
+            col = 0;
+        }
+        wins[0].draw_lines(font1[C].get_drawing_points(), 120*col+20, 120*row+20);
+        col++;
+    }
 
     wins[0].present();
 
