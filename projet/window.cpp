@@ -1,7 +1,7 @@
 #include <SDL.h>
 #include <vector>
-#include "point2d.h"
-#include "window.h"
+#include "point2d.hpp"
+#include "window.hpp"
 
 namespace sdl {
 

@@ -2,7 +2,7 @@
 #define FONT_H
 
 #include <vector>
-#include "point2d.h"
+#include "point2d.hpp"
 
 class Bezier {
     // linear: 2 elements, quadratic: 3 elements

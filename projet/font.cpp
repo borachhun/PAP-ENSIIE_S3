@@ -1,6 +1,6 @@
 #include <vector>
-#include "point2d.h"
-#include "font.h"
+#include "point2d.hpp"
+#include "font.hpp"
 
 const int NUM_ALPHABET = 26;
 

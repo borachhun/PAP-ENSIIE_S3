@@ -3,7 +3,7 @@
 
 #include <SDL.h>
 #include <vector>
-#include "point2d.h"
+#include "point2d.hpp"
 
 namespace sdl {
 
