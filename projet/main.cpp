@@ -6,7 +6,10 @@
 
 int main() {
 
+    // Initialize a font
     Font font1;
+
+    // Adding information to the font for all alphabets
     font1['A'] = Glyph(std::vector<Bezier>{
         Bezier(Point2d(0,100), Point2d(38,0)),      Bezier(Point2d(38,0), Point2d(62,0)),
         Bezier(Point2d(62,0), Point2d(100,100)),    Bezier(Point2d(100,100), Point2d(76,100)),
@@ -221,6 +224,7 @@ int main() {
     });
 
 
+    // Initialize SDL
     sdl::Sdl sdl;
 
     if (sdl.init() != 0) {
@@ -230,9 +234,10 @@ int main() {
     const int WIN_WIDTH = 1100;
     const int WIN_HEIGHT = 380;
 
-    /* === WINDOW 1 === */
+    // Create a window
     sdl.add_window("FONT 1", Point2d(100, 100), WIN_WIDTH, WIN_HEIGHT);
 
+    // Draw alphabets on the window
     int row = 0;
     int col = 0;
     for (char C='A'; C<='Z'; C++) {
@@ -244,10 +249,14 @@ int main() {
         col++;
     }
 
+    // Display the alphabets on the window
     sdl.get_window(0).present();
 
+    // Waiting for all windows to be closed
     sdl.waiting();
 
+    // Close SDL
     sdl.quit();
+
     return 0;
 }
