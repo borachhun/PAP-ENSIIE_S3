@@ -1,12 +1,14 @@
 #include <SDL.h>
 #include <vector>
+#include <string>
+#include <cstring>
 #include "point2d.hpp"
 #include "window.hpp"
 
 namespace sdl {
 
-Window::Window(char *title, Point2d pos, int w, int h) {
-    win = SDL_CreateWindow(title, pos.get_x(), pos.get_y(),
+Window::Window(std::string title, Point2d pos, int w, int h) {
+    win = SDL_CreateWindow(title.c_str(), pos.get_x(), pos.get_y(),
                             w, h, SDL_WINDOW_OPENGL);
     ren = SDL_CreateRenderer(win, -1, 0);
 

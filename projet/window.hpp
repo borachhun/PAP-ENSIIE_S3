@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include <vector>
+#include <string>
 #include "point2d.hpp"
 
 namespace sdl {
@@ -31,7 +32,7 @@ class Window {
          * @param w     Width of the window
          * @param h     Height of the window
          */
-        Window(char *title, Point2d pos, int w, int h);
+        Window(std::string title, Point2d pos, int w, int h);
 
         /**
          * Get ID of a SDL window

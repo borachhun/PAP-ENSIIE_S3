@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include <vector>
+#include <string>
 #include "point2d.hpp"
 #include "window.hpp"
 
@@ -43,7 +44,7 @@ class Sdl {
          * @param w     Width of the window
          * @param h     Height of the window
          */
-        void add_window(char *title, Point2d pos, int w, int h);
+        void add_window(std::string title, Point2d pos, int w, int h);
 
         /**
          * Get window from the window list

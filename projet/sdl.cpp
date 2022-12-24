@@ -1,5 +1,6 @@
 #include <SDL.h>
 #include <vector>
+#include <string>
 #include "point2d.hpp"
 #include "window.hpp"
 #include "sdl.hpp"
@@ -31,7 +32,7 @@ void Sdl::waiting() {
         }
     }
 }
-void Sdl::add_window(char *title, Point2d pos, int w, int h) {
+void Sdl::add_window(std::string title, Point2d pos, int w, int h) {
     wins.push_back(sdl::Window(title, pos, w, h));
 }
 Window & Sdl::get_window(unsigned int i) {
