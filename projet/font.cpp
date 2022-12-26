@@ -69,7 +69,6 @@ Font::Font() {
         );
     }
 }
-// C: capital letter
 Glyph & Font::operator[](char C) {
     if (C >= 65 && C <= 90) {
         return alphabets[int(C-65)];

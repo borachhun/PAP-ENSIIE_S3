@@ -38,7 +38,7 @@ class Window {
          * Get ID of a SDL window
          * @return The ID of the window
          */
-        Uint32 get_window_id();
+        Uint32 get_window_id() const;
 
         /**
          * Update the window with any rendering performed since the previous call

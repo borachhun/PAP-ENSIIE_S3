@@ -15,7 +15,7 @@ Window::Window(std::string title, Point2d pos, int w, int h) {
     SDL_SetRenderDrawColor(ren, 255, 255, 255, SDL_ALPHA_OPAQUE);
     SDL_RenderClear(ren);
 }
-Uint32 Window::get_window_id() {
+Uint32 Window::get_window_id() const {
     return SDL_GetWindowID(win);
 }
 void Window::present() {
