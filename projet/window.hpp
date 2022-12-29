@@ -51,13 +51,27 @@ class Window {
         void destroy_window();
 
         /**
-         * Draw lines with the renderer
+         * Draw lines on the window with the renderer
          * @param points    A vector containing even numbers of points representing the extremities
          *                  of lines to be drawn
          * @param offset_x  Horizontal translation added to the drawing lines
          * @param offset_y  Vertical translation added to the drawing lines
+         * @param r         Red of RGB color of the drawing lines
+         * @param g         Green of RGB color of the drawing lines
+         * @param b         BLUE of RGB color of the drawing lines
          */
-        void draw_lines(std::vector<Point2d> points, int offset_x, int offset_y);
+        void draw_lines(std::vector<Point2d> points, int offset_x, int offset_y, int r, int g, int b);
+
+        /**
+         * Fill a polygon with a given color on the window
+         * @param vertices  Vertices of a polygon to be filled
+         * @param offset_x  Horizontal translation added to the vertices and filling
+         * @param offset_y  Vertical translation added to the vertices and filling
+         * @param r         Red of RGB color of the filling
+         * @param g         Green of RGB color of the filling
+         * @param b         BLUE of RGB color of the filling
+         */
+        void fill_polygon(std::vector<Point2d> vertices, int offset_x, int offset_y, int r, int g, int b);
 };
 
 } // namespace sdl

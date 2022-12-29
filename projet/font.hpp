@@ -66,24 +66,24 @@ class Bezier {
 class Glyph {
 
     /**
-     * A list of Bezier curves that make up the outlines
+     * A list with elements being a list of Bezier curves that make up a single outline
      */
-    std::vector<Bezier> curves;
+    std::vector<std::vector<Bezier>> curves;
 
     public:
 
         /**
          * Initialize a glyph
-         * @param c A list of Bezier curves that make up the outlines
+         * @param c A list with elements being a list of Bezier curves that make up a single outline
          */
-        Glyph(std::vector<Bezier> c);
+        Glyph(std::vector<std::vector<Bezier>> c);
 
         /**
          * Get discrete points on the outlines
-         * @return A vector containing even numbers of points representing the extremities
-         *         of lines approximating segments of the outlines
+         * @return A vector with elements being vectors containing even numbers of points representing 
+         * the extremities of lines approximating segments of a single outline
          */
-        std::vector<Point2d> get_drawing_points() const;
+        std::vector<std::vector<Point2d>> get_drawing_points() const;
 };
 
 

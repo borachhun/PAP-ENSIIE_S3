@@ -48,14 +48,21 @@ Point2d Bezier::de_casteljau(double t) const {
 
 
 
-Glyph::Glyph(std::vector<Bezier> c) : curves(c) {}
-std::vector<Point2d> Glyph::get_drawing_points() const {
-    std::vector<Point2d> res;
-    for (unsigned int i=0; i<curves.size(); i++) {
-        std::vector<Point2d> current_drawing_points = curves[i].get_drawing_points();
-        for (unsigned int j=0; j<current_drawing_points.size(); j++) {
-            res.push_back(current_drawing_points[j]);
+Glyph::Glyph(std::vector<std::vector<Bezier>> c) : curves(c) {}
+std::vector<std::vector<Point2d>> Glyph::get_drawing_points() const {
+    std::vector<std::vector<Point2d>> res;
+
+    for (unsigned int i=0; i<curves.size(); i++) {  // a single outline
+        std::vector<Point2d> sub_res;
+
+        for (unsigned int j=0; j<curves[i].size(); j++) {   // a single bezier
+            std::vector<Point2d> current_drawing_points = curves[i][j].get_drawing_points();
+
+            for (unsigned int k=0; k<current_drawing_points.size(); k++) {
+                sub_res.push_back(current_drawing_points[k]);
+            }
         }
+        res.push_back(sub_res);
     }
     return res;
 }
@@ -65,7 +72,7 @@ std::vector<Point2d> Glyph::get_drawing_points() const {
 Font::Font() {
     for (int i=0; i<NUM_ALPHABET; i++) {
         alphabets.push_back(
-            Glyph(std::vector<Bezier>{Bezier(Point2d(0,0), Point2d(0,0))})
+            Glyph(std::vector<std::vector<Bezier>>{{Bezier(Point2d(0,0), Point2d(0,0))}})
         );
     }
 }
