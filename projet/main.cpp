@@ -283,7 +283,6 @@ int main() {
         }
     });
 
-
     // Initialize SDL
     sdl::Sdl sdl;
 
@@ -302,27 +301,54 @@ int main() {
     // Draw alphabets on the windows
     int row = 0;
     int col = 0;
+    int offset_x, offset_y;
+
     for (char C='A'; C<='Z'; C++) {
         if (col == 9) {
             row++;
             col = 0;
         }
+        offset_x = 120*col + 20;
+        offset_y = 120*row + 20;
+
         std::vector<std::vector<Point2d>> outlines = my_font[C].get_drawing_points();
+
         for (int i=0; i<outlines.size(); i++) {
 
-            // Draw outlines
-            sdl.get_window(0).draw_lines(outlines[i], 120*col+20, 120*row+20, 0, 0, 0);
-            sdl.get_window(1).draw_lines(outlines[i], 120*col+20, 120*row+20, 0, 0, 0);
-            sdl.get_window(2).draw_lines(outlines[i], 120*col+20, 120*row+20, 0, 0, 0);
+            // Draw 2px red outer outlines with translations
+            sdl.get_window(2).draw_lines(outlines[i], offset_x-1, offset_y, 255, 0, 0);
+            sdl.get_window(2).draw_lines(outlines[i], offset_x+1, offset_y, 255, 0, 0);
+            sdl.get_window(2).draw_lines(outlines[i], offset_x, offset_y-1, 255, 0, 0);
+            sdl.get_window(2).draw_lines(outlines[i], offset_x, offset_y+1, 255, 0, 0);
+
+            sdl.get_window(2).draw_lines(outlines[i], offset_x-1, offset_y-1, 255, 0, 0);
+            sdl.get_window(2).draw_lines(outlines[i], offset_x-1, offset_y+1, 255, 0, 0);
+            sdl.get_window(2).draw_lines(outlines[i], offset_x+1, offset_y-1, 255, 0, 0);
+            sdl.get_window(2).draw_lines(outlines[i], offset_x+1, offset_y+1, 255, 0, 0);
+
+            sdl.get_window(2).draw_lines(outlines[i], offset_x-2, offset_y, 255, 0, 0);
+            sdl.get_window(2).draw_lines(outlines[i], offset_x+2, offset_y, 255, 0, 0);
+            sdl.get_window(2).draw_lines(outlines[i], offset_x, offset_y-2, 255, 0, 0);
+            sdl.get_window(2).draw_lines(outlines[i], offset_x, offset_y+2, 255, 0, 0);
+
+            sdl.get_window(2).draw_lines(outlines[i], offset_x-2, offset_y-2, 255, 0, 0);
+            sdl.get_window(2).draw_lines(outlines[i], offset_x-2, offset_y+2, 255, 0, 0);
+            sdl.get_window(2).draw_lines(outlines[i], offset_x+2, offset_y-2, 255, 0, 0);
+            sdl.get_window(2).draw_lines(outlines[i], offset_x+2, offset_y+2, 255, 0, 0);
+
+            // Draw main font outlines
+            sdl.get_window(0).draw_lines(outlines[i], offset_x, offset_y, 0, 0, 0);
+            sdl.get_window(1).draw_lines(outlines[i], offset_x, offset_y, 0, 0, 0);
+            sdl.get_window(2).draw_lines(outlines[i], offset_x, offset_y, 0, 0, 0);
             
             // Fill alphabets
             if (i == 0) {   // Outer outline
-                sdl.get_window(1).fill_polygon(outlines[i], 120*col+20, 120*row+20, 0, 0, 0);
-                sdl.get_window(2).fill_polygon(outlines[i], 120*col+20, 120*row+20, 0, 0, 0);
+                sdl.get_window(1).fill_polygon(outlines[i], offset_x, offset_y, 0, 0, 0);
+                sdl.get_window(2).fill_polygon(outlines[i], offset_x, offset_y, 0, 0, 0);
             }
             else {          // Inner holes
-                sdl.get_window(1).fill_polygon(outlines[i], 120*col+20, 120*row+20, 255, 255, 255);
-                sdl.get_window(2).fill_polygon(outlines[i], 120*col+20, 120*row+20, 255, 255, 255);
+                sdl.get_window(1).fill_polygon(outlines[i], offset_x, offset_y, 255, 255, 255);
+                sdl.get_window(2).fill_polygon(outlines[i], offset_x, offset_y, 255, 255, 255);
             }
         }
         col++;
