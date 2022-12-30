@@ -45,8 +45,9 @@ class Bezier {
 
         /**
          * Get discrete points on the Bezier curve
-         * @return A vector containing even numbers of points representing the extremities
-         *         of lines approximating segments of the curve
+         * @return A vector of points on the curve
+         *         - If degree 1, returns the extremities of the line
+         *         - If degree 2, returns 21 points on the curve
          */
         std::vector<Point2d> get_drawing_points() const;
 
@@ -80,8 +81,7 @@ class Glyph {
 
         /**
          * Get discrete points on the outlines
-         * @return A vector with elements being vectors containing even numbers of points representing 
-         * the extremities of lines approximating segments of a single outline
+         * @return A vector with elements being vectors containing points on a single outline
          */
         std::vector<std::vector<Point2d>> get_drawing_points() const;
 };

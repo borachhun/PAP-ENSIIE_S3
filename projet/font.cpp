@@ -26,9 +26,6 @@ std::vector<Point2d> Bezier::get_drawing_points() const {
         for (int i=0; i<=20; i++) {
             Point2d res = de_casteljau(double(i)/20);
             points.push_back(res);
-            if (i>0 && i<20) {
-                points.push_back(res);
-            }
         }
         return points;
     }
@@ -58,7 +55,10 @@ std::vector<std::vector<Point2d>> Glyph::get_drawing_points() const {
         for (unsigned int j=0; j<curves[i].size(); j++) {   // a single bezier
             std::vector<Point2d> current_drawing_points = curves[i][j].get_drawing_points();
 
-            for (unsigned int k=0; k<current_drawing_points.size(); k++) {
+            // Avoid getting duplicate ends of curves
+            // (ending of one curve and beginning of another curve of a continuous outline)
+            unsigned int k = (j != 0);
+            for (; k<current_drawing_points.size(); k++) {
                 sub_res.push_back(current_drawing_points[k]);
             }
         }

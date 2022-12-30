@@ -52,8 +52,7 @@ class Window {
 
         /**
          * Draw lines on the window with the renderer
-         * @param points    A vector containing even numbers of points representing the extremities
-         *                  of lines to be drawn
+         * @param points    A vector containing points whose connecting lines are to be drawn
          * @param offset_x  Horizontal translation added to the drawing lines
          * @param offset_y  Vertical translation added to the drawing lines
          * @param r         Red of RGB color of the drawing lines

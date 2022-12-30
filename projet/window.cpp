@@ -27,7 +27,7 @@ void Window::destroy_window() {
 }
 void Window::draw_lines(std::vector<Point2d> points, int offset_x, int offset_y, int r, int g, int b) {
     SDL_SetRenderDrawColor(ren, r, g, b, SDL_ALPHA_OPAQUE);
-    for (unsigned int i=0; i<points.size()-1; i+=2) {
+    for (unsigned int i=0; i<points.size()-1; i++) {
         Point2d start = points[i];
         Point2d end = points[i+1];
         SDL_RenderDrawLine(ren, start.get_x()+offset_x, start.get_y()+offset_y,
@@ -59,14 +59,8 @@ bool is_in_polygon(std::vector<Point2d> unique_vertices, int x, int y) {
 
 void Window::fill_polygon(std::vector<Point2d> vertices, int offset_x, int offset_y, int r, int g, int b) {
 
-    // Remove duplicate vertices of polygon
-    std::vector<Point2d>::iterator iter = vertices.begin();
-    iter += 2;
-    while (iter != vertices.end()) {
-        vertices.erase(iter);
-        iter++;
-    }
-    vertices.erase(iter-1);
+    // Remove last duplicate vertex of polygon
+    vertices.erase(vertices.end()-1);
 
     SDL_SetRenderDrawColor(ren, r, g, b, SDL_ALPHA_OPAQUE);
 
