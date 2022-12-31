@@ -59,6 +59,10 @@ bool is_in_polygon(std::vector<Point2d> unique_vertices, int x, int y) {
 
 void Window::fill_polygon(std::vector<Point2d> vertices, int offset_x, int offset_y, int r, int g, int b) {
 
+    if (vertices.size() < 4) {
+        throw "Invalid polygon";
+    }
+
     // Remove last duplicate vertex of polygon
     vertices.erase(vertices.end()-1);
 

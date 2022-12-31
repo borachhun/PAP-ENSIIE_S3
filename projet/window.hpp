@@ -63,7 +63,7 @@ class Window {
 
         /**
          * Fill a polygon with a given color on the window
-         * @param vertices  Vertices of a polygon to be filled
+         * @param vertices  Vertices of a polygon to be filled (first and last vertex are the same)
          * @param offset_x  Horizontal translation added to the vertices and filling
          * @param offset_y  Vertical translation added to the vertices and filling
          * @param r         Red of RGB color of the filling

@@ -290,13 +290,19 @@ int main() {
         return -1;
     }
     
-    const int WIN_WIDTH = 1100;
-    const int WIN_HEIGHT = 380;
+    const int ALPHA_WIDTH = 101;    // alphabet: width = height
+    const int GAP = 20;
+    const int NUM_ALPHA = 26;
+    const int NUM_ALPHA_ROW = 9;
+    const int NUM_ALPHA_COL = 3;
+
+    int win_width = (ALPHA_WIDTH*NUM_ALPHA_ROW) + (GAP*(NUM_ALPHA_ROW+1));
+    int win_height = (ALPHA_WIDTH*NUM_ALPHA_COL) + (GAP*(NUM_ALPHA_COL+1));
 
     // Create windows
-    sdl.add_window("FONT 1", Point2d(100, 100), WIN_WIDTH, WIN_HEIGHT);
-    sdl.add_window("FONT 2", Point2d(200, 200), WIN_WIDTH, WIN_HEIGHT);
-    sdl.add_window("FONT 3", Point2d(300, 300), WIN_WIDTH, WIN_HEIGHT);
+    sdl.add_window("FONT 1", Point2d(100, 100), win_width, win_height);
+    sdl.add_window("FONT 2", Point2d(200, 200), win_width, win_height);
+    sdl.add_window("FONT 3", Point2d(300, 300), win_width, win_height);
 
     // Draw alphabets on the windows
     int row = 0;
@@ -304,12 +310,12 @@ int main() {
     int offset_x, offset_y;
 
     for (char C='A'; C<='Z'; C++) {
-        if (col == 9) {
+        if (col == NUM_ALPHA_ROW) {
             row++;
             col = 0;
         }
-        offset_x = 120*col + 20;
-        offset_y = 120*row + 20;
+        offset_x = (ALPHA_WIDTH+GAP)*col + GAP;
+        offset_y = (ALPHA_WIDTH+GAP)*row + GAP;
 
         std::vector<std::vector<Point2d>> outlines = my_font[C].get_drawing_points();
 
