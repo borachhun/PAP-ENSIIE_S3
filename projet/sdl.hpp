@@ -15,7 +15,7 @@ namespace sdl {
 class Sdl {
 
     /**
-     * A list of windows to be displayed
+     * A vector of windows to be displayed
      */
     std::vector<sdl::Window> wins;
 
@@ -28,7 +28,7 @@ class Sdl {
         int init();
 
         /**
-         * Clean up all initialized SDL subsystems
+         * Clean up all initialized SDL elements
          */
         void quit();
 
@@ -38,7 +38,7 @@ class Sdl {
         void waiting();
 
         /**
-         * Create a new window and add it to the window list
+         * Create a new window and add it to the vector of windows
          * @param title Title of the window
          * @param pos   Position of the window
          * @param w     Width of the window
@@ -47,9 +47,9 @@ class Sdl {
         void add_window(std::string title, Point2d pos, int w, int h);
 
         /**
-         * Get window from the window list
-         * @param i Index of the window in the list
-         * @return Reference to the respective window in the list
+         * Get window from the vector of windows
+         * @param i Index of the window in the vector of windows
+         * @return Reference to the respective window in the vector
          */
         Window & get_window(unsigned int i);
 };

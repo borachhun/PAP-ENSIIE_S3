@@ -46,7 +46,7 @@ class Window {
         void present();
 
         /**
-         * Destroy the window
+         * Destroy the SDL window and its SDL renderer
          */
         void destroy_window();
 

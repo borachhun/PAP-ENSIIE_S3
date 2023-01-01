@@ -348,11 +348,11 @@ int main() {
             sdl.get_window(2).draw_lines(outlines[i], offset_x, offset_y, 0, 0, 0);
             
             // Fill alphabets
-            if (i == 0) {   // Outer outline
+            if (i == 0) {   // Outer outline: fill with black
                 sdl.get_window(1).fill_polygon(outlines[i], offset_x, offset_y, 0, 0, 0);
                 sdl.get_window(2).fill_polygon(outlines[i], offset_x, offset_y, 0, 0, 0);
             }
-            else {          // Inner holes
+            else {          // Inner holes: fill with white
                 sdl.get_window(1).fill_polygon(outlines[i], offset_x, offset_y, 255, 255, 255);
                 sdl.get_window(2).fill_polygon(outlines[i], offset_x, offset_y, 255, 255, 255);
             }

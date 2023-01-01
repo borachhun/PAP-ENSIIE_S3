@@ -2,17 +2,17 @@
 #define POINT2D_H
 
 /**
- * Represents coordinates of points on 2D plane
+ * Represents a point on 2D plane
  */
 class Point2d {
 
     /**
-     * Horizontal coordinate of a point
+     * Horizontal coordinate of the point
      */
     int x_;
 
     /**
-     * Vertical coordinate of a point
+     * Vertical coordinate of the point
      */
     int y_;
 
@@ -24,7 +24,7 @@ class Point2d {
         Point2d() : x_(0), y_(0) {}
 
         /**
-         * Initialize a point with custom coordinates
+         * Initialize a point with given coordinates
          * @param x Horizontal coordinate
          * @param y Vertical coordinate
          */

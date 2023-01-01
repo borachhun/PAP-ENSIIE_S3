@@ -10,7 +10,7 @@
 class Bezier {
 
     /**
-     * A list of extremities and control points of the Bezier curve
+     * A vector of extremities and control points of the Bezier curve
      */
     std::vector<Point2d> elements;
 
@@ -33,7 +33,7 @@ class Bezier {
 
         /**
          * Initialize a Bezier curve
-         * @param elts A list of extremities and control points of the curve
+         * @param elts A vector of extremities and control points of the curve
          */
         Bezier(std::vector<Point2d> elts);
 
@@ -46,7 +46,7 @@ class Bezier {
         /**
          * Get discrete points on the Bezier curve
          * @return A vector of points on the curve
-         *         - If degree 1, returns the extremities of the line
+         *         - If degree 1, returns the 2 extremities of the line
          *         - If degree 2, returns 21 points on the curve
          */
         std::vector<Point2d> get_drawing_points() const;
@@ -67,8 +67,8 @@ class Bezier {
 class Glyph {
 
     /**
-     * A list whose elements are lists of Bezier curves representing
-     * a single continuous outline of the character
+     * A vector, an element of which is a vector of Bezier curves that
+     * represents a single continuous outline of the character
      */
     std::vector<std::vector<Bezier>> curves;
 
@@ -76,8 +76,8 @@ class Glyph {
 
         /**
          * Initialize a glyph
-         * @param c A list whose elements are lists of Bezier curves representing
-         * a single continuous outline of the character
+         * @param c A vector, an element of which is a vector of Bezier curves that
+         *          represents a single continuous outline of the character
          */
         Glyph(std::vector<std::vector<Bezier>> c);
 
@@ -96,7 +96,7 @@ class Glyph {
 class Font {
 
     /**
-     * A list of glyphs of characters
+     * A vector of glyphs of characters
      */
     std::vector<Glyph> alphabets;
 
@@ -117,7 +117,7 @@ class Font {
         /**
          * Access an alphabet of the font
          * @param C Character of the alphabet to access
-         * @return Reference to the glyph of the alphabet
+         * @return The glyph of the alphabet
          */
         const Glyph operator[](char C) const;
 };
