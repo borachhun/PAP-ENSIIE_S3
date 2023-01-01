@@ -43,18 +43,22 @@ void Window::draw_lines(std::vector<Point2d> points, int offset_x, int offset_y,
  */
 bool is_in_polygon(std::vector<Point2d> unique_vertices, int x, int y) {
     int j = unique_vertices.size() - 1;
-    bool odd_nodes = false;
+    int num_intersection = 0;
 
     for (int i=0; i<unique_vertices.size(); i++) {
-        if (unique_vertices[i].get_y() < y && unique_vertices[j].get_y() >= y || unique_vertices[j].get_y() < y && unique_vertices[i].get_y() >= y) {
-            if (unique_vertices[i].get_x() + float(y-unique_vertices[i].get_y()) / float(unique_vertices[j].get_y() - unique_vertices[i].get_y()) * float(unique_vertices[j].get_x() - unique_vertices[i].get_x()) < x) {
-                odd_nodes = !odd_nodes;
+        if (unique_vertices[i].get_y() < y && unique_vertices[j].get_y() >= y ||
+            unique_vertices[j].get_y() < y && unique_vertices[i].get_y() >= y) {
+
+            if (x < float(y-unique_vertices[i].get_y()) * float(unique_vertices[j].get_x()-unique_vertices[i].get_x()) /
+                    float(unique_vertices[j].get_y()-unique_vertices[i].get_y()) + unique_vertices[i].get_x()) {
+                
+                num_intersection++;
             }
         }
         j=i;
     }
     
-    return odd_nodes;
+    return (num_intersection % 2 != 0);
 }
 
 void Window::fill_polygon(std::vector<Point2d> vertices, int offset_x, int offset_y, int r, int g, int b) {
