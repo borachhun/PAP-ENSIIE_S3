@@ -42,12 +42,12 @@ void Window::draw_lines(std::vector<Point2d> points, int offset_x, int offset_y,
  * @param y                 A coordinate of the point to be tested
  */
 bool is_in_polygon(std::vector<Point2d> unique_vertices, int x, int y) {
-    int j = unique_vertices.size() - 1;
+    unsigned int j = unique_vertices.size() - 1;
     int num_intersection = 0;
 
-    for (int i=0; i<unique_vertices.size(); i++) {
-        if (unique_vertices[i].get_y() < y && unique_vertices[j].get_y() >= y ||
-            unique_vertices[j].get_y() < y && unique_vertices[i].get_y() >= y) {
+    for (unsigned int i=0; i<unique_vertices.size(); i++) {
+        if ((unique_vertices[i].get_y() < y && unique_vertices[j].get_y() >= y) ||
+            (unique_vertices[j].get_y() < y && unique_vertices[i].get_y() >= y)) {
 
             if (x < float(y-unique_vertices[i].get_y()) * float(unique_vertices[j].get_x()-unique_vertices[i].get_x()) /
                     float(unique_vertices[j].get_y()-unique_vertices[i].get_y()) + unique_vertices[i].get_x()) {
@@ -55,7 +55,7 @@ bool is_in_polygon(std::vector<Point2d> unique_vertices, int x, int y) {
                 num_intersection++;
             }
         }
-        j=i;
+        j = i;
     }
     
     return (num_intersection % 2 != 0);

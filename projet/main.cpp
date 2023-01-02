@@ -292,7 +292,6 @@ int main() {
     
     const int ALPHA_WIDTH = 101;    // alphabet: width = height
     const int GAP = 20;
-    const int NUM_ALPHA = 26;
     const int NUM_ALPHA_ROW = 9;
     const int NUM_ALPHA_COL = 3;
 
@@ -319,7 +318,7 @@ int main() {
 
         std::vector<std::vector<Point2d>> outlines = my_font[C].get_drawing_points();
 
-        for (int i=0; i<outlines.size(); i++) {
+        for (unsigned int i=0; i<outlines.size(); i++) {
 
             // Draw 2px red outer outlines with translations
             sdl.get_window(2).draw_lines(outlines[i], offset_x-1, offset_y, 255, 0, 0);
